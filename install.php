@@ -16,8 +16,8 @@ $repo = get_github_repo($repo_name);
 
 $placeholders = array(
     '%%REPO_TITLE%%' => $repo_title,
-    '%%REPO_NAME%%' => $repo->full_name,
-    '%%REPO_DESCRIPTION%%' => $repo->description,
+    '%%REPO_NAME%%' => $repo_name,
+    '%%REPO_DESCRIPTION%%' => isset($repo->description) ? $repo->description : '',
     '%%REPO_NAMESPACE%%' => str_replace(' ', '', $repo_title),
     '%%AUTHOR_NAME%%' => trim(`git config --global user.name`),
     '%%AUTHOR_EMAIL%%' => trim(`git config --global user.email`),
@@ -43,4 +43,7 @@ foreach ($items as $item)
 }
 
 rmdir('dist');
+
+`git init`;
+`git remote add origin master git@github.com:{$repo_name}.git`
 
