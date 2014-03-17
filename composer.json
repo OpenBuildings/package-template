@@ -12,7 +12,7 @@
     "scripts": {
         "post-create-project-cmd": [
             "php install.php",
-            "rm install.php",
+            "rm install.php"
         ]
     },
 }
