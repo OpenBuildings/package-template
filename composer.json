@@ -9,9 +9,6 @@
             "role": "Author"
         }
     ],
-    "autoload": {
-        "psr-4": {"CL\\Carpo\\": "src/"}
-    },
     "scripts": {
         "post-create-project-cmd": [
             "php install.php",

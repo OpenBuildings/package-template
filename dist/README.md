@@ -1,4 +1,4 @@
-Carpo
+%%REPO_TITLE%%
 =====
 
 [![Build Status](https://travis-ci.org/%%REPO_NAME%%.png?branch=master)](https://travis-ci.org/%%REPO_NAME%%)

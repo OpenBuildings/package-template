@@ -9,26 +9,35 @@ function get_github_repo($repo_name) {
     return json_decode(curl_exec($ch));
 }
 
+$repo_title = ucwords(str_replace(array('-', '_'), array(' ', ' '), $repo_title));
 $repo_name = 'clippings/'.basename(getcwd());
 
 $repo = get_github_repo($repo_name);
 
 $placeholders = array(
+    '%%REPO_TITLE%%' => $repo_title,
     '%%REPO_NAME%%' => $repo->full_name,
     '%%REPO_DESCRIPTION%%' => $repo->description,
-    '%%REPO_NAMESPACE%%' => str_replace(' ', '', ucwords(str_replace(array('-', '_'), array(' ', ' '), $repo_name))),
-    '%%AUTHOR_NAME%%' => `git config --global user.name`,
-    '%%AUTHOR_EMAIL%%' => `git config --global user.email`,
+    '%%REPO_NAMESPACE%%' => str_replace(' ', '', $repo_title),
+    '%%AUTHOR_NAME%%' => trim(`git config --global user.name`),
+    '%%AUTHOR_EMAIL%%' => trim(`git config --global user.email`),
     '%%YEAR%%' => date('Y'),
 );
 
-$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('dist'));
+$allItems = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('dist'));
 
 unlink('composer.json');
 
-foreach ($files as $file) {
+foreach ($allItems as $file) {
     file_put_contents($file->getPathname(), strtr(file_get_contents($file->getPathname()), $placeholders));
-    rename($file->getPathname(), str_replace('dist/', '', $file->getPathname()));
+}
+
+$items = new FilesystemIterator('dist');
+
+foreach ($items as $item)
+{
+    $newFilename = str_replace('dist/', '', $item->getPathname());
+    rename($item->getPathname(), $newFilename);
 }
 
 rmdir('dist');
