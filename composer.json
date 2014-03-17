@@ -1,0 +1,21 @@
+{
+    "name": "clippings/package-template",
+    "description": "Package Template",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Ivan Kerin",
+            "email": "ikerin@gmail.com",
+            "role": "Author"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"CL\\Carpo\\": "src/"}
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "php install.php",
+            "rm install.php",
+        ]
+    },
+}

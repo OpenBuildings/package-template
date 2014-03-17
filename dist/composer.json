@@ -1,0 +1,15 @@
+{
+    "name": "%%REPO_NAME%%",
+    "description": "%%REPO_DESCRIPTION%%",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "%%AUTHOR_NAME%%",
+            "email": "%%AUTHOR_EMAIL%%",
+            "role": "Author"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"CL\\%%REPO_NAMESPACE%%\\": "src/"}
+    },
+}
