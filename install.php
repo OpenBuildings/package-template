@@ -28,7 +28,7 @@ unlink('composer.json');
 
 foreach ($files as $file) {
     file_put_contents($file->getPathname(), strtr(file_get_contents($file->getPathname()), $placeholders));
-    unlink($file->getPathname());
+    rename($file->getPathname(), str_replace('dist/', '', $file->getPathname()));
 }
 
 rmdir('dist');
