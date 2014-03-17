@@ -46,4 +46,4 @@ foreach ($items as $item) {
 rmdir('dist');
 
 `git init`;
-`git remote add origin master git@github.com:{$repo_name}.git`;
+`git remote add origin git@github.com:{$repo_name}.git`;
