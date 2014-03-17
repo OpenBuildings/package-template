@@ -9,7 +9,7 @@ function get_github_repo($repo_name) {
     return json_decode(curl_exec($ch));
 }
 
-$repo_title = ucwords(str_replace(array('-', '_'), array(' ', ' '), $repo_title));
+$repo_title = ucwords(str_replace(array('-', '_'), array(' ', ' '), basename(getcwd())));
 $repo_name = 'clippings/'.basename(getcwd());
 
 $repo = get_github_repo($repo_name);
