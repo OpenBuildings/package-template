@@ -1,11 +1,20 @@
 <?php
 
-$repo_name = dirname(getcwd());
+function get_github_repo($repo_name) {
+    $ch = curl_init('https://api.github.com/repos/'.$repo_name);
 
-$repo = json_decode(file_get_contents('https://api.github.com/repos/'.$repo_name));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Clippings Package Template Script');
+
+    return json_decode(curl_exec($ch));
+}
+
+$repo_name = 'clippings/'.basename(getcwd());
+
+$repo = get_github_repo($repo_name);
 
 $placeholders = array(
-    '%%REPO_NAME%%' => $dir->full_name,
+    '%%REPO_NAME%%' => $repo->full_name,
     '%%REPO_DESCRIPTION%%' => $repo->description,
     '%%REPO_NAMESPACE%%' => str_replace(' ', '', ucwords(str_replace(array('-', '_'), array(' ', ' '), $repo_name))),
     '%%AUTHOR_NAME%%' => `git config --global user.name`,
@@ -17,10 +26,10 @@ $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('dist'));
 
 unlink('composer.json');
 
-foreach($files as $file) {
-    if ($file->isFile()) {
-        var_dump($item->getFilename());
-        // file_put_contents($item->getFilename(), strtr(file_get_contents('../test/bootstrap.php'), $placeholders));
-    }
+foreach ($files as $file) {
+    file_put_contents($file->getPathname(), strtr(file_get_contents($file->getPathname()), $placeholders));
+    unlink($file->getPathname());
 }
+
+rmdir('dist');
 
