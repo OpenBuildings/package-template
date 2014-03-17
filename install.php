@@ -15,13 +15,13 @@ $repo_name = 'clippings/'.basename(getcwd());
 $repo = get_github_repo($repo_name);
 
 $placeholders = array(
-    '%%REPO_TITLE%%' => $repo_title,
-    '%%REPO_NAME%%' => $repo_name,
+    '%%REPO_TITLE%%'       => $repo_title,
+    '%%REPO_NAME%%'        => $repo_name,
     '%%REPO_DESCRIPTION%%' => isset($repo->description) ? $repo->description : '',
-    '%%REPO_NAMESPACE%%' => str_replace(' ', '', $repo_title),
-    '%%AUTHOR_NAME%%' => trim(`git config --global user.name`),
-    '%%AUTHOR_EMAIL%%' => trim(`git config --global user.email`),
-    '%%YEAR%%' => date('Y'),
+    '%%REPO_NAMESPACE%%'   => str_replace(' ', '', $repo_title),
+    '%%AUTHOR_NAME%%'      => trim(`git config --global user.name`),
+    '%%AUTHOR_EMAIL%%'     => trim(`git config --global user.email`),
+    '%%YEAR%%'             => date('Y'),
 );
 
 $allItems = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('dist'));
@@ -31,13 +31,14 @@ unlink('README.md');
 unlink('.gitignore');
 
 foreach ($allItems as $file) {
-    file_put_contents($file->getPathname(), strtr(file_get_contents($file->getPathname()), $placeholders));
+    $contents = file_get_contents($file->getPathname());
+    $contents = strtr($contents, $placeholders);
+    file_put_contents($file->getPathname(), $contents);
 }
 
 $items = new FilesystemIterator('dist');
 
-foreach ($items as $item)
-{
+foreach ($items as $item) {
     $newFilename = str_replace('dist/', '', $item->getPathname());
     rename($item->getPathname(), $newFilename);
 }
@@ -45,5 +46,4 @@ foreach ($items as $item)
 rmdir('dist');
 
 `git init`;
-`git remote add origin master git@github.com:{$repo_name}.git`
-
+`git remote add origin master git@github.com:{$repo_name}.git`;
