@@ -28,6 +28,7 @@ $allItems = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('dist')
 
 unlink('composer.json');
 unlink('README.md');
+unlink('.gitignore');
 
 foreach ($allItems as $file) {
     file_put_contents($file->getPathname(), strtr(file_get_contents($file->getPathname()), $placeholders));
