@@ -12,11 +12,11 @@ class Template
     {
         return $template->retrieveParams($output, [
             new Prompt\Title(),
-            // new Prompt\Description(),
-            // new Prompt\PHPNamespace(),
-            // new Prompt\AuthorName(),
-            // new Prompt\AuhtorEmail(),
-            // new Prompt\Copyright(),
+            new Prompt\Description(),
+            new Prompt\PHPNamespace(),
+            new Prompt\AuthorName(),
+            new Prompt\AuhtorEmail(),
+            new Prompt\Copyright(),
         ]);
     }
 }
