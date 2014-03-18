@@ -1,10 +1,10 @@
 <?php
 
-namespace CL\%%REPO_NAMESPACE%%;
+namespace CL\{%php_namespace%};
 
 /**
- * @author    %%AUTHOR_NAME%% <%%AUTHOR_EMAIL%%>
- * @copyright (c) %%YEAR%% Clippings Ltd.
+ * @author    {%author_name%} <{%author_email%}>
+ * @copyright {%copyright%}
  * @license   http://spdx.org/licenses/BSD-3-Clause
  */
 class Init

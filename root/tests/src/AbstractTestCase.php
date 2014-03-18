@@ -1,6 +1,6 @@
 <?php
 
-namespace CL\%%REPO_NAMESPACE%%\Test;
+namespace CL\{%php_namespace%}\Test;
 
 use PHPUnit_Framework_TestCase;
 
