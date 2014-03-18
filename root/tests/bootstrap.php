@@ -3,4 +3,4 @@
 error_reporting(E_ALL);
 
 $loader = require __DIR__.'/../vendor/autoload.php';
-$loader->addPsr4('CL\\{%php_namespace_escaped%}\\Test\\', __DIR__.'/src');
+$loader->addPsr4('{%php_namespace_escaped%}\\Test\\', __DIR__.'/src');

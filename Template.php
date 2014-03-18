@@ -17,6 +17,7 @@ class Template
             new Prompt\AuthorName(),
             new Prompt\AuthorEmail(),
             new Prompt\Copyright(),
+            new Prompt\Bugs(),
         ]);
     }
 }

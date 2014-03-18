@@ -1,6 +1,6 @@
 <?php
 
-namespace CL\{%php_namespace%};
+namespace {%php_namespace%};
 
 /**
  * @author    {%author_name%} <{%author_email%}>
