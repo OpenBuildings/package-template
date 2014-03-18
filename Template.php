@@ -1,5 +1,7 @@
 <?php
 
+namespace CL\ComposerInit;
+
 use CL\ComposerInit\Prompt;
 use CL\ComposerInit\TemplateHelper;
 use Symfony\Component\Console\Output\OutputInterface;
