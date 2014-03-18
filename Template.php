@@ -15,7 +15,7 @@ class Template
             new Prompt\Description(),
             new Prompt\PHPNamespace(),
             new Prompt\AuthorName(),
-            new Prompt\AuhtorEmail(),
+            new Prompt\AuthorEmail(),
             new Prompt\Copyright(),
         ]);
     }
