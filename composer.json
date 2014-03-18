@@ -2,17 +2,12 @@
     "name": "clippings/package-template",
     "description": "Package Template",
     "license": "BSD-3-Clause",
+    "type": "composer-init-template",
     "authors": [
         {
             "name": "Ivan Kerin",
             "email": "ikerin@gmail.com",
             "role": "Author"
         }
-    ],
-    "scripts": {
-        "post-create-project-cmd": [
-            "php install.php",
-            "rm install.php"
-        ]
-    }
+    ]
 }
