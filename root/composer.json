@@ -11,5 +11,5 @@
     ],
     "autoload": {
         "psr-4": {"{%php_namespace_escaped%}\\": "src/"}
-    },
+    }
 }
