@@ -8,7 +8,11 @@
 
 {%description%}
 
-## License
+Usage
+-----
+
+License
+-------
 
 Copyright (c) {%copyright%} Developed by {%author_name%}
 
