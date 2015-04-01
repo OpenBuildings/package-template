@@ -7,5 +7,5 @@ First create a new github repository
 
 Then:
 
-	composer create-project clippings/package-template foobar
+	composer-init use clippings/package-template
 

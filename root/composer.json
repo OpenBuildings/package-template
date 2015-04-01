@@ -1,15 +1,18 @@
 {
-    "name": "{%repository_name%}",
-    "description": "{%description%}",
+    "name": "{% package_name %}",
+    "description": "{% description %}",
     "license": "BSD-3-Clause",
     "authors": [
         {
-            "name": "{%author_name%}",
-            "email": "{%author_email%}",
+            "name": "{% author_name %}",
+            "email": "{% author_email %}",
             "role": "Author"
         }
     ],
     "autoload": {
-        "psr-4": {"{%php_namespace_escaped%}\\": "src/"}
+        "psr-4": {
+            "{% php_namespace_escaped %}\\": "src/",
+            "{% php_namespace_escaped %}\\Test\\": "tests/src/"
+        }
     }
 }
