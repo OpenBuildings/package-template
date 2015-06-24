@@ -1,5 +1,5 @@
-{%title%}
-{%title_underline%}
+{% title %}
+{% title_underline %}
 
 [![Build Status](https://travis-ci.org/{%repository_name%}.png?branch=master)](https://travis-ci.org/{% package_name %})
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/{%repository_name%}/badges/quality-score.png)](https://scrutinizer-ci.com/g/{% package_name %}/)
