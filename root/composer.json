@@ -11,7 +11,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "{% php_namespace_escaped %}\\": "src/",
+            "{% php_namespace_escaped %}\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "{% php_namespace_escaped %}\\Test\\": "tests/src/"
         }
     }
